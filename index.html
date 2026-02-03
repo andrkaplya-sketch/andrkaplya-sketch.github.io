@@ -2,88 +2,87 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ANDRII KAPLIA</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-
   <header class="header">
-    <h1 class="title">ANDRII KAPLIA</h1>
+    <div class="title">ANDRII KAPLIA</div>
 
-    <div class="topbar">
-      <button class="tab is-active" data-tab="works" type="button">works</button>
-      <button class="tab" data-tab="tiktok" type="button">tiktok</button>
+    <div class="nav">
+      <button class="tab is-active" data-tab="films" type="button">films</button>
+      <button class="tab" data-tab="vertical" type="button">vertical</button>
       <a class="contact" href="mailto:youremail@gmail.com">contact</a>
     </div>
   </header>
 
-  <main class="wrap">
+  <main class="frame">
+    <!-- FILMS -->
+    <section class="grid is-active" id="films">
 
-    <!-- WORKS -->
-    <section class="grid is-active" id="works">
       <a class="card horizontal" href="https://www.youtube.com/watch?v=AMpScs_LjzU" target="_blank" rel="noreferrer">
-        <div class="placeholder"></div>
-        <div class="side">WORK_01</div>
+        <div class="ph"></div>
+        <div class="side">FILM_01</div>
+        <div class="cap">FILM_01</div>
       </a>
 
       <a class="card horizontal" href="https://www.youtube.com/watch?v=zSz_THqWE0A" target="_blank" rel="noreferrer">
-        <div class="placeholder"></div>
-        <div class="side">WORK_02</div>
+        <div class="ph"></div>
+        <div class="side">FILM_02</div>
+        <div class="cap">FILM_02</div>
       </a>
 
       <a class="card horizontal" href="https://www.youtube.com/watch?v=gZIBObxKs6A" target="_blank" rel="noreferrer">
-        <div class="placeholder"></div>
-        <div class="side">WORK_03</div>
+        <div class="ph"></div>
+        <div class="side">FILM_03</div>
+        <div class="cap">FILM_03</div>
       </a>
+
     </section>
 
-    <!-- TIKTOK -->
-    <section class="grid" id="tiktok">
+    <!-- VERTICAL -->
+    <section class="grid" id="vertical">
+
       <a class="card vertical" href="https://www.instagram.com/reel/DQZMQ-lk-uY/" target="_blank" rel="noreferrer">
-        <div class="placeholder"></div>
-        <div class="side">TIKTOK_01</div>
+        <div class="ph"></div>
+        <div class="side">VERTICAL_01</div>
+        <div class="cap">VERTICAL_01</div>
       </a>
 
       <a class="card vertical" href="https://www.instagram.com/reel/DLpgPS9MT56/" target="_blank" rel="noreferrer">
-        <div class="placeholder"></div>
-        <div class="side">TIKTOK_02</div>
+        <div class="ph"></div>
+        <div class="side">VERTICAL_02</div>
+        <div class="cap">VERTICAL_02</div>
       </a>
 
       <a class="card vertical" href="https://www.instagram.com/reel/DObFhBcDCms/" target="_blank" rel="noreferrer">
-        <div class="placeholder"></div>
-        <div class="side">TIKTOK_03</div>
+        <div class="ph"></div>
+        <div class="side">VERTICAL_03</div>
+        <div class="cap">VERTICAL_03</div>
       </a>
+
     </section>
 
     <footer class="footer">
-      <div class="footer-links">
-        <a href="https://instagram.com/yourhandle" target="_blank" rel="noreferrer">instagram</a>
-        <a href="https://tiktok.com/@yourhandle" target="_blank" rel="noreferrer">tiktok</a>
-        <a href="https://youtube.com/@yourhandle" target="_blank" rel="noreferrer">youtube</a>
-      </div>
-      <div class="footer-note">Berlin</div>
+      <a class="ig" href="https://instagram.com/yourhandle" target="_blank" rel="noreferrer">instagram</a>
+      <div class="meta">Berlin · 2026</div>
     </footer>
-
   </main>
 
   <script>
     const tabs = document.querySelectorAll(".tab");
-    const works = document.getElementById("works");
-    const tiktok = document.getElementById("tiktok");
+    const films = document.getElementById("films");
+    const vertical = document.getElementById("vertical");
 
-    tabs.forEach(btn => {
-      btn.addEventListener("click", () => {
-        tabs.forEach(b => b.classList.remove("is-active"));
-        btn.classList.add("is-active");
+    function show(which){
+      films.classList.toggle("is-active", which === "films");
+      vertical.classList.toggle("is-active", which === "vertical");
+      tabs.forEach(t => t.classList.toggle("is-active", t.dataset.tab === which));
+    }
 
-        works.classList.remove("is-active");
-        tiktok.classList.remove("is-active");
-
-        (btn.dataset.tab === "works" ? works : tiktok).classList.add("is-active");
-      });
-    });
+    tabs.forEach(btn => btn.addEventListener("click", () => show(btn.dataset.tab)));
   </script>
-
 </body>
 </html>
