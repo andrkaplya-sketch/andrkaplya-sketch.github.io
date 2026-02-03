@@ -1,64 +1,175 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ANDRII KAPLIA</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <header class="head">
-    <div class="h1">ANDRII KAPLIA</div>
-    <a class="contact" href="mailto:youremail@gmail.com">contact</a>
+  <!-- Top bar like Stereotactic -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="#top" aria-label="Home">ANDRII KAPLIA</a>
+
+      <button class="contactBtn" type="button" id="contactBtn" aria-controls="contactPanel" aria-expanded="false">
+        CONTACT
+      </button>
+    </div>
   </header>
 
-  <main class="frame">
-    <section class="collage">
+  <!-- Contact slide panel (one-page, simple) -->
+  <aside class="contactPanel" id="contactPanel" aria-hidden="true">
+    <div class="contactPanel__inner">
+      <div class="contactPanel__title">CONTACT</div>
 
-      <!-- BIG HORIZONTAL -->
-      <a class="tile h big" href="https://www.youtube.com/watch?v=AMpScs_LjzU" target="_blank" rel="noreferrer">
-        <img class="media" src="https://i.ytimg.com/vi/AMpScs_LjzU/hqdefault.jpg" alt="WORK_01" loading="lazy">
-        <div class="side">WORK_01</div>
+      <!-- поменяй на свои -->
+      <div class="contactPanel__links">
+        <a href="mailto:youremail@gmail.com">youremail@gmail.com</a>
+        <a href="https://instagram.com/" target="_blank" rel="noreferrer">instagram</a>
+      </div>
+
+      <div class="contactPanel__meta">Berlin · 2026</div>
+
+      <button class="contactPanel__close" type="button" id="closeContact">close</button>
+    </div>
+  </aside>
+
+  <!-- Dark overlay when contact open -->
+  <div class="overlay" id="overlay" hidden></div>
+
+  <main id="top" class="wrap">
+    <!-- Masonry feed -->
+    <section class="feed" aria-label="Works feed">
+
+      <!-- ====== Примеры: YouTube (превью автоматом) ====== -->
+      <a class="card" href="https://www.youtube.com/watch?v=AMpScs_LjzU" target="_blank" rel="noreferrer">
+        <div class="thumb is-16x9">
+          <img loading="lazy" alt="FILM_01" src="https://i.ytimg.com/vi/AMpScs_LjzU/hqdefault.jpg">
+        </div>
+        <div class="cap">
+          <span class="cap__title">FILM_01</span>
+        </div>
       </a>
 
-      <!-- SMALL HORIZONTAL (GIF) -->
-      <a class="tile h small" href="https://www.youtube.com/watch?v=zSz_THqWE0A" target="_blank" rel="noreferrer">
-        <img class="media" src="assets/gifs/work-02.gif" alt="WORK_02" loading="lazy">
-        <div class="side">WORK_02</div>
+      <a class="card" href="https://www.youtube.com/watch?v=zSz_THqWE0A" target="_blank" rel="noreferrer">
+        <div class="thumb is-16x9">
+          <img loading="lazy" alt="FILM_02" src="https://i.ytimg.com/vi/zSz_THqWE0A/hqdefault.jpg">
+        </div>
+        <div class="cap">
+          <span class="cap__title">FILM_02</span>
+        </div>
       </a>
 
-      <!-- SMALL HORIZONTAL -->
-      <a class="tile h small" href="https://www.youtube.com/watch?v=gZIBObxKs6A" target="_blank" rel="noreferrer">
-        <img class="media" src="https://i.ytimg.com/vi/gZIBObxKs6A/hqdefault.jpg" alt="WORK_03" loading="lazy">
-        <div class="side">WORK_03</div>
+      <a class="card" href="https://www.youtube.com/watch?v=gZIBObxKs6A" target="_blank" rel="noreferrer">
+        <div class="thumb is-16x9">
+          <img loading="lazy" alt="FILM_03" src="https://i.ytimg.com/vi/gZIBObxKs6A/hqdefault.jpg">
+        </div>
+        <div class="cap">
+          <span class="cap__title">FILM_03</span>
+        </div>
       </a>
 
-      <!-- VERTICAL 1 -->
-      <a class="tile v med" href="https://www.instagram.com/reel/DQZMQ-lk-uY/" target="_blank" rel="noreferrer">
-        <img class="media" src="assets/gifs/vertical-01.gif" alt="VERTICAL_01" loading="lazy">
-        <div class="side">VERTICAL_01</div>
+      <!-- ====== Примеры: Vertical GIF (файлы из репы) ====== -->
+      <!-- положи гифки в assets/gifs/ -->
+      <a class="card" href="https://www.instagram.com/reel/DQZMQ-lk-uY/" target="_blank" rel="noreferrer">
+        <div class="thumb is-9x16">
+          <img loading="lazy" alt="VERTICAL_01" src="assets/gifs/vertical-01.gif">
+        </div>
+        <div class="cap">
+          <span class="cap__title">VERTICAL_01</span>
+        </div>
       </a>
 
-      <!-- VERTICAL 2 -->
-      <a class="tile v med" href="https://www.instagram.com/reel/DLpgPS9MT56/" target="_blank" rel="noreferrer">
-        <img class="media" src="assets/gifs/vertical-02.gif" alt="VERTICAL_02" loading="lazy">
-        <div class="side">VERTICAL_02</div>
+      <a class="card" href="https://www.instagram.com/reel/DLpgPS9MT56/" target="_blank" rel="noreferrer">
+        <div class="thumb is-9x16">
+          <img loading="lazy" alt="VERTICAL_02" src="assets/gifs/vertical-02.gif">
+        </div>
+        <div class="cap">
+          <span class="cap__title">VERTICAL_02</span>
+        </div>
       </a>
 
-      <!-- WIDE FEATURE (как белая работа в рефе) -->
-      <a class="tile h wide" href="#" target="_blank" rel="noreferrer">
-        <img class="media" src="assets/thumbs/feature.jpg" alt="FEATURE" loading="lazy">
-        <div class="side">FEATURE</div>
+      <a class="card" href="https://www.instagram.com/reel/DObFhBcDCms/" target="_blank" rel="noreferrer">
+        <div class="thumb is-9x16">
+          <img loading="lazy" alt="VERTICAL_03" src="assets/gifs/vertical-03.gif">
+        </div>
+        <div class="cap">
+          <span class="cap__title">VERTICAL_03</span>
+        </div>
       </a>
 
-      <!-- добавляй дальше по этому же шаблону -->
+      <!-- ====== Заглушки, чтобы добить “как у стереотактика” по плотности ====== -->
+      <!-- копируй/вставляй карточку столько раз, сколько надо -->
+      <a class="card" href="#" onclick="return false;">
+        <div class="thumb is-16x9">
+          <div class="ph"></div>
+        </div>
+        <div class="cap"><span class="cap__title">FILM_04</span></div>
+      </a>
+
+      <a class="card" href="#" onclick="return false;">
+        <div class="thumb is-9x16">
+          <div class="ph"></div>
+        </div>
+        <div class="cap"><span class="cap__title">VERTICAL_04</span></div>
+      </a>
+
+      <a class="card" href="#" onclick="return false;">
+        <div class="thumb is-16x9">
+          <div class="ph"></div>
+        </div>
+        <div class="cap"><span class="cap__title">FILM_05</span></div>
+      </a>
+
+      <a class="card" href="#" onclick="return false;">
+        <div class="thumb is-9x16">
+          <div class="ph"></div>
+        </div>
+        <div class="cap"><span class="cap__title">VERTICAL_05</span></div>
+      </a>
 
     </section>
 
-    <footer class="foot">
-      <div class="year">2026</div>
+    <footer class="footer">
+      <div>2026</div>
     </footer>
   </main>
+
+  <script>
+    const btn = document.getElementById('contactBtn');
+    const panel = document.getElementById('contactPanel');
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.getElementById('closeContact');
+
+    function openPanel() {
+      panel.classList.add('is-open');
+      panel.setAttribute('aria-hidden', 'false');
+      btn.setAttribute('aria-expanded', 'true');
+      overlay.hidden = false;
+      setTimeout(() => overlay.classList.add('is-on'), 0);
+    }
+
+    function closePanel() {
+      panel.classList.remove('is-open');
+      panel.setAttribute('aria-hidden', 'true');
+      btn.setAttribute('aria-expanded', 'false');
+      overlay.classList.remove('is-on');
+      setTimeout(() => overlay.hidden = true, 150);
+    }
+
+    btn.addEventListener('click', () => {
+      const isOpen = panel.classList.contains('is-open');
+      isOpen ? closePanel() : openPanel();
+    });
+
+    overlay.addEventListener('click', closePanel);
+    closeBtn.addEventListener('click', closePanel);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closePanel();
+    });
+  </script>
 </body>
 </html>
