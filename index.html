@@ -1,90 +1,64 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>ANDRII KAPLIA</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <header class="header">
-    <div class="title">ANDRII KAPLIA</div>
-
-    <div class="nav">
-      <button class="tab is-active" data-tab="works" type="button">works</button>
-      <button class="tab" data-tab="tiktok" type="button">tiktok</button>
-      <a class="contact" href="mailto:youremail@gmail.com">contact</a>
-    </div>
+  <header class="head">
+    <div class="h1">ANDRII KAPLIA</div>
+    <a class="contact" href="mailto:youremail@gmail.com">contact</a>
   </header>
 
   <main class="frame">
+    <section class="collage">
 
-    <!-- WORKS (YouTube thumbnails) -->
-    <section class="grid is-active" id="works">
-
-      <a class="card horizontal" href="https://www.youtube.com/watch?v=AMpScs_LjzU" target="_blank" rel="noreferrer">
-        <img class="thumb" src="https://i.ytimg.com/vi/AMpScs_LjzU/hqdefault.jpg" alt="WORK_01">
+      <!-- BIG HORIZONTAL -->
+      <a class="tile h big" href="https://www.youtube.com/watch?v=AMpScs_LjzU" target="_blank" rel="noreferrer">
+        <img class="media" src="https://i.ytimg.com/vi/AMpScs_LjzU/hqdefault.jpg" alt="WORK_01" loading="lazy">
         <div class="side">WORK_01</div>
       </a>
 
-      <a class="card horizontal" href="https://www.youtube.com/watch?v=zSz_THqWE0A" target="_blank" rel="noreferrer">
-        <img class="thumb" src="https://i.ytimg.com/vi/zSz_THqWE0A/hqdefault.jpg" alt="WORK_02">
+      <!-- SMALL HORIZONTAL (GIF) -->
+      <a class="tile h small" href="https://www.youtube.com/watch?v=zSz_THqWE0A" target="_blank" rel="noreferrer">
+        <img class="media" src="assets/gifs/work-02.gif" alt="WORK_02" loading="lazy">
         <div class="side">WORK_02</div>
       </a>
 
-      <a class="card horizontal" href="https://www.youtube.com/watch?v=gZIBObxKs6A" target="_blank" rel="noreferrer">
-        <img class="thumb" src="https://i.ytimg.com/vi/gZIBObxKs6A/hqdefault.jpg" alt="WORK_03">
+      <!-- SMALL HORIZONTAL -->
+      <a class="tile h small" href="https://www.youtube.com/watch?v=gZIBObxKs6A" target="_blank" rel="noreferrer">
+        <img class="media" src="https://i.ytimg.com/vi/gZIBObxKs6A/hqdefault.jpg" alt="WORK_03" loading="lazy">
         <div class="side">WORK_03</div>
       </a>
 
+      <!-- VERTICAL 1 -->
+      <a class="tile v med" href="https://www.instagram.com/reel/DQZMQ-lk-uY/" target="_blank" rel="noreferrer">
+        <img class="media" src="assets/gifs/vertical-01.gif" alt="VERTICAL_01" loading="lazy">
+        <div class="side">VERTICAL_01</div>
+      </a>
+
+      <!-- VERTICAL 2 -->
+      <a class="tile v med" href="https://www.instagram.com/reel/DLpgPS9MT56/" target="_blank" rel="noreferrer">
+        <img class="media" src="assets/gifs/vertical-02.gif" alt="VERTICAL_02" loading="lazy">
+        <div class="side">VERTICAL_02</div>
+      </a>
+
+      <!-- WIDE FEATURE (как белая работа в рефе) -->
+      <a class="tile h wide" href="#" target="_blank" rel="noreferrer">
+        <img class="media" src="assets/thumbs/feature.jpg" alt="FEATURE" loading="lazy">
+        <div class="side">FEATURE</div>
+      </a>
+
+      <!-- добавляй дальше по этому же шаблону -->
+
     </section>
 
-    <!-- TIKTOK (пока плейсхолдеры; для Instagram превью нужны картинки/гифки файлами) -->
-    <section class="grid" id="tiktok">
-
-      <a class="card vertical" href="https://www.instagram.com/reel/DQZMQ-lk-uY/" target="_blank" rel="noreferrer">
-        <div class="ph"></div>
-        <div class="side">TIKTOK_01</div>
-      </a>
-
-      <a class="card vertical" href="https://www.instagram.com/reel/DLpgPS9MT56/" target="_blank" rel="noreferrer">
-        <div class="ph"></div>
-        <div class="side">TIKTOK_02</div>
-      </a>
-
-      <a class="card vertical" href="https://www.instagram.com/reel/DObFhBcDCms/" target="_blank" rel="noreferrer">
-        <div class="ph"></div>
-        <div class="side">TIKTOK_03</div>
-      </a>
-
-    </section>
-
-    <footer class="footer">
+    <footer class="foot">
       <div class="year">2026</div>
     </footer>
   </main>
-
-  <script>
-    const tabs = document.querySelectorAll(".tab");
-    const works = document.getElementById("works");
-    const tiktok = document.getElementById("tiktok");
-
-    function show(which){
-      works.classList.toggle("is-active", which === "works");
-      tiktok.classList.toggle("is-active", which === "tiktok");
-      tabs.forEach(t => t.classList.toggle("is-active", t.dataset.tab === which));
-    }
-
-    tabs.forEach(btn => btn.addEventListener("click", () => show(btn.dataset.tab)));
-
-    // YouTube thumbs: если hqdefault вдруг не грузится — пробуем другой вариант
-    document.querySelectorAll("img.thumb").forEach(img => {
-      img.addEventListener("error", () => {
-        const src = img.getAttribute("src") || "";
-        if (src.includes("hqdefault")) img.src = src.replace("hqdefault", "mqdefault");
-      }, { once: true });
-    });
-  </script>
 </body>
 </html>
