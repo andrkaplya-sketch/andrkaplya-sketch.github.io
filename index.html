@@ -1,11 +1,117 @@
 <!doctype html>
-<html>
+<html lang="ru">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ANDRII KAPLIA</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body style="margin:0;background:black;color:red;font-family:Arial;text-align:center;padding-top:60px;">
-  <h1>ANDRII KAPLIA</h1>
-  <p>GitHub Pages works</p>
+<body>
+
+  <header class="header">
+    <h1 class="title">ANDRII KAPLIA</h1>
+
+    <nav class="nav">
+      <button class="tab is-active" data-tab="works">works</button>
+      <button class="tab" data-tab="tiktok">tiktok</button>
+
+      <a class="link" href="mailto:youremail@gmail.com">contact</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <!-- WORKS / HORIZONTAL -->
+    <section class="grid is-active" id="works">
+
+      <!-- 1 -->
+      <a class="card horizontal" href="#" aria-label="Work 01">
+        <video src="assets/works_01.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="side">MY_WORK_01</div>
+      </a>
+
+      <!-- 2 -->
+      <a class="card horizontal" href="#" aria-label="Work 02">
+        <video src="assets/works_02.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="side">MY_WORK_02</div>
+      </a>
+
+      <!-- 3 -->
+      <a class="card horizontal" href="#" aria-label="Work 03">
+        <video src="assets/works_03.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="side">MY_WORK_03</div>
+      </a>
+
+    </section>
+
+    <!-- TIKTOK / VERTICAL -->
+    <section class="grid" id="tiktok">
+
+      <!-- 1 -->
+      <a class="card vertical" href="#" aria-label="TikTok 01">
+        <video src="assets/tiktok_01.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="side">TIKTOK_01</div>
+      </a>
+
+      <!-- 2 -->
+      <a class="card vertical" href="#" aria-label="TikTok 02">
+        <video src="assets/tiktok_02.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="side">TIKTOK_02</div>
+      </a>
+
+      <!-- 3 -->
+      <a class="card vertical" href="#" aria-label="TikTok 03">
+        <video src="assets/tiktok_03.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="side">TIKTOK_03</div>
+      </a>
+
+    </section>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a class="link" href="https://instagram.com/" target="_blank" rel="noreferrer">instagram</a>
+        <a class="link" href="https://tiktok.com/" target="_blank" rel="noreferrer">tiktok</a>
+        <a class="link" href="https://youtube.com/" target="_blank" rel="noreferrer">youtube</a>
+      </div>
+      <div class="footer-note">Berlin</div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Tabs
+    const tabs = document.querySelectorAll(".tab");
+    const works = document.getElementById("works");
+    const tiktok = document.getElementById("tiktok");
+
+    function stopAllVideos() {
+      document.querySelectorAll("video").forEach(v => {
+        try { v.pause(); } catch(e){}
+        v.currentTime = 0;
+      });
+    }
+
+    tabs.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabs.forEach(b => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+
+        works.classList.remove("is-active");
+        tiktok.classList.remove("is-active");
+
+        stopAllVideos();
+
+        (btn.dataset.tab === "works" ? works : tiktok).classList.add("is-active");
+      });
+    });
+
+    // Autoplay (muted helps). Also play on hover for reliability.
+    document.querySelectorAll("video").forEach(v => {
+      v.play().catch(()=>{});
+      v.addEventListener("mouseenter", () => v.play().catch(()=>{}));
+      v.addEventListener("mouseleave", () => { v.pause(); v.currentTime = 0; });
+    });
+  </script>
+
 </body>
 </html>
