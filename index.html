@@ -1,134 +1,89 @@
-:root{
-  --bg:#000;
-  --red:#e00000;
-  --red2:rgba(224,0,0,.55);
-  --line:rgba(255,255,255,.12);
-  --max:980px;
-}
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ANDRII KAPLIA</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--red);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-}
+  <header class="header">
+    <h1 class="title">ANDRII KAPLIA</h1>
 
-.header{
-  max-width:var(--max);
-  margin:28px auto 0;
-  padding:0 18px;
-  text-align:center;
-}
+    <div class="topbar">
+      <button class="tab is-active" data-tab="works" type="button">works</button>
+      <button class="tab" data-tab="tiktok" type="button">tiktok</button>
+      <a class="contact" href="mailto:youremail@gmail.com">contact</a>
+    </div>
+  </header>
 
-.title{
-  margin:0 0 6px;
-  letter-spacing:2px;
-  font-weight:700;
-  font-size:28px;
-}
+  <main class="wrap">
 
-.topbar{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  align-items:center;
-  flex-wrap:wrap;
-  margin-bottom:18px;
-}
+    <!-- WORKS -->
+    <section class="grid is-active" id="works">
+      <a class="card horizontal" href="https://www.youtube.com/watch?v=AMpScs_LjzU" target="_blank" rel="noreferrer">
+        <div class="placeholder"></div>
+        <div class="side">WORK_01</div>
+      </a>
 
-.tab{
-  background:transparent;
-  border:1px solid rgba(224,0,0,.25);
-  color:var(--red);
-  padding:8px 12px;
-  text-transform:lowercase;
-  cursor:pointer;
-  font-size:14px;
-}
-.tab.is-active{ border-color:var(--red); }
+      <a class="card horizontal" href="https://www.youtube.com/watch?v=zSz_THqWE0A" target="_blank" rel="noreferrer">
+        <div class="placeholder"></div>
+        <div class="side">WORK_02</div>
+      </a>
 
-.contact{
-  color:var(--red);
-  text-decoration:none;
-  border-bottom:1px solid transparent;
-  padding:6px 8px;
-}
-.contact:hover{border-bottom-color:var(--red)}
+      <a class="card horizontal" href="https://www.youtube.com/watch?v=gZIBObxKs6A" target="_blank" rel="noreferrer">
+        <div class="placeholder"></div>
+        <div class="side">WORK_03</div>
+      </a>
+    </section>
 
-.wrap{
-  max-width:var(--max);
-  margin:0 auto;
-  padding:0 18px 40px;
-  border-left:1px solid var(--line);
-  border-right:1px solid var(--line);
-}
+    <!-- TIKTOK -->
+    <section class="grid" id="tiktok">
+      <a class="card vertical" href="https://www.instagram.com/reel/DQZMQ-lk-uY/" target="_blank" rel="noreferrer">
+        <div class="placeholder"></div>
+        <div class="side">TIKTOK_01</div>
+      </a>
 
-.grid{
-  display:none;
-  grid-template-columns: repeat(3, 1fr);
-  gap:18px;
-  padding:18px 18px 26px;
-}
-.grid.is-active{display:grid}
+      <a class="card vertical" href="https://www.instagram.com/reel/DLpgPS9MT56/" target="_blank" rel="noreferrer">
+        <div class="placeholder"></div>
+        <div class="side">TIKTOK_02</div>
+      </a>
 
-.card{
-  position:relative;
-  display:block;
-  text-decoration:none;
-  border:1px solid rgba(224,0,0,.18);
-  overflow:hidden;
-  background:#050000;
-}
-.card:hover{border-color:rgba(224,0,0,.55)}
+      <a class="card vertical" href="https://www.instagram.com/reel/DObFhBcDCms/" target="_blank" rel="noreferrer">
+        <div class="placeholder"></div>
+        <div class="side">TIKTOK_03</div>
+      </a>
+    </section>
 
-.card.horizontal{aspect-ratio:16/9;}
-.card.vertical{aspect-ratio:9/16;}
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="https://instagram.com/yourhandle" target="_blank" rel="noreferrer">instagram</a>
+        <a href="https://tiktok.com/@yourhandle" target="_blank" rel="noreferrer">tiktok</a>
+        <a href="https://youtube.com/@yourhandle" target="_blank" rel="noreferrer">youtube</a>
+      </div>
+      <div class="footer-note">Berlin</div>
+    </footer>
 
-.placeholder{
-  width:100%;
-  height:100%;
-  background: radial-gradient(circle at 50% 50%, #140000, #000);
-}
+  </main>
 
-/* vertical side label */
-.side{
-  position:absolute;
-  top:10px;
-  right:8px;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  font-size:10px;
-  letter-spacing:1.6px;
-  text-transform:uppercase;
-  color:var(--red2);
-  pointer-events:none;
-  user-select:none;
-}
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const works = document.getElementById("works");
+    const tiktok = document.getElementById("tiktok");
 
-.footer{
-  padding:14px 18px 28px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:14px;
-  flex-wrap:wrap;
-}
+    tabs.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabs.forEach(b => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
 
-.footer a{
-  color:var(--red);
-  text-decoration:none;
-  margin-right:14px;
-}
-.footer a:hover{text-decoration:underline}
-.footer-note{opacity:.85}
+        works.classList.remove("is-active");
+        tiktok.classList.remove("is-active");
 
-@media (max-width: 900px){
-  .grid{grid-template-columns: repeat(2, 1fr);}
-}
-@media (max-width: 560px){
-  .grid{grid-template-columns: 1fr;}
-  .title{font-size:24px}
-  .wrap{border-left:0;border-right:0}
-}
+        (btn.dataset.tab === "works" ? works : tiktok).classList.add("is-active");
+      });
+    });
+  </script>
+
+</body>
+</html>
