@@ -1,9 +1,9 @@
 :root{
   --bg:#000;
   --red:#e00000;
-  --red-soft:rgba(224,0,0,.55);
+  --red2:rgba(224,0,0,.65);
   --line:rgba(255,255,255,.12);
-  --max:1000px;
+  --max:980px;
 }
 
 *{box-sizing:border-box}
@@ -16,113 +16,75 @@ body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* ===== HEADER ===== */
-
-.header{
+.head{
   max-width:var(--max);
   margin:28px auto 0;
-  padding:0 20px;
+  padding:0 18px;
   text-align:center;
 }
 
-.title{
-  font-size:30px;
+.h1{
+  font-size:28px;
   font-weight:700;
-  letter-spacing:3px;
-  margin-bottom:10px;
-}
-
-.nav{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin-bottom:24px;
-}
-
-.tab{
-  background:transparent;
-  border:1px solid rgba(224,0,0,.25);
-  color:var(--red);
-  padding:8px 14px;
-  font-size:14px;
-  cursor:pointer;
-  text-transform:lowercase;
-}
-
-.tab.is-active{
-  border-color:var(--red);
+  letter-spacing:2px;
+  margin:0 0 6px;
 }
 
 .contact{
   color:var(--red);
   text-decoration:none;
-  padding:8px 10px;
+  padding:6px 10px;
+  border-bottom:1px solid transparent;
+  font-size:14px;
 }
-
-/* ===== MAIN FRAME (боковые линии как в рефе) ===== */
+.contact:hover{border-bottom-color:var(--red);}
 
 .frame{
-  width:min(var(--max), calc(100% - 40px));
-  margin:0 auto;
+  width:min(var(--max), calc(100% - 36px));
+  margin:18px auto 0;
   border-left:1px solid var(--line);
   border-right:1px solid var(--line);
-  padding:10px 20px 40px;
+  padding:18px 18px 28px;
 }
 
-/* ===== GRID ===== */
-
-.grid{
-  display:none;
-  grid-template-columns:repeat(3, 1fr);
-  gap:22px;
-  margin-top:10px;
-}
-
-.grid.is-active{
+/* COLLAGE GRID */
+.collage{
   display:grid;
+  grid-template-columns:repeat(6, 1fr);
+  gap:18px;
+  align-items:start;
 }
 
-/* ===== CARD ===== */
-
-.card{
+/* TILE */
+.tile{
   position:relative;
   display:block;
-  border:1px solid rgba(224,0,0,.18);
   overflow:hidden;
-  text-decoration:none;
+  border:1px solid rgba(224,0,0,.18);
   background:#050000;
-  transition:border .2s ease;
+  text-decoration:none;
 }
+.tile:hover{border-color:rgba(224,0,0,.55);}
 
-.card:hover{
-  border-color:rgba(224,0,0,.55);
-}
-
-/* форматы */
-.card.horizontal{ aspect-ratio:16/9; }
-.card.vertical{ aspect-ratio:9/16; }
-
-/* ===== YouTube PREVIEW ===== */
-
-.thumb{
+.media{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
-  transform:scale(1.02);
+  transform:scale(1.01);
 }
 
-/* ===== Placeholder (для tiktok) ===== */
+/* SIZES (как ручная верстка Readymag) */
+.h{ aspect-ratio:16/9; }
+.v{ aspect-ratio:9/16; }
 
-.ph{
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at 50% 50%, #140000, #000);
-}
+.big{ grid-column:span 4; }
+.small{ grid-column:span 3; }
+.med{ grid-column:span 2; }
+.wide{ grid-column:span 4; aspect-ratio:21/9; }
 
-/* ===== Vertical side label ===== */
-
+/* side label like readymag */
 .side{
   position:absolute;
   top:10px;
@@ -130,35 +92,35 @@ body{
   writing-mode:vertical-rl;
   transform:rotate(180deg);
   font-size:10px;
-  letter-spacing:1.8px;
+  letter-spacing:1.6px;
   text-transform:uppercase;
-  color:var(--red-soft);
+  color:var(--red2);
   pointer-events:none;
   user-select:none;
 }
 
-/* ===== FOOTER ===== */
-
-.footer{
+/* footer */
+.foot{
   display:flex;
-  justify-content:flex-start;
-  margin-top:26px;
+  justify-content:center;
+  margin-top:22px;
 }
-
 .year{
   font-size:12px;
-  opacity:.8;
-  letter-spacing:.5px;
+  opacity:.85;
+  letter-spacing:.6px;
 }
 
-/* ===== RESPONSIVE ===== */
-
+/* responsive */
 @media (max-width:900px){
-  .grid{grid-template-columns:repeat(2,1fr)}
+  .collage{ grid-template-columns:repeat(4,1fr); }
+  .big{ grid-column:span 4; }
+  .small{ grid-column:span 2; }
+  .med{ grid-column:span 2; }
+  .wide{ grid-column:span 4; }
 }
-
-@media (max-width:600px){
-  .grid{grid-template-columns:1fr}
-  .title{font-size:24px}
-  .frame{border-left:0;border-right:0}
+@media (max-width:560px){
+  .collage{ grid-template-columns:1fr; }
+  .big,.small,.med,.wide{ grid-column:span 1; }
+  .frame{ border-left:0; border-right:0; }
 }
