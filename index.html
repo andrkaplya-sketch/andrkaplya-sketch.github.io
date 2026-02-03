@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ANDRII KAPLIA</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
 
@@ -12,79 +12,77 @@
     <h1 class="title">ANDRII KAPLIA</h1>
 
     <div class="topbar">
-      <button class="tab is-active" data-tab="films">films</button>
-      <button class="tab" data-tab="vertical">vertical</button>
+      <button class="tab is-active" data-tab="films" type="button">films</button>
+      <button class="tab" data-tab="vertical" type="button">vertical</button>
       <a class="contact" href="mailto:youremail@gmail.com">contact</a>
     </div>
   </header>
 
   <main class="wrap">
 
-    <!-- FILMS (horizontal) -->
+    <!-- FILMS (YouTube) -->
     <section class="grid is-active" id="films">
-
-      <!-- пример: YouTube ссылка + превью -->
-      <a class="card horizontal" href="https://www.youtube.com/watch?v=XXXXXXXXXXX" target="_blank" rel="noreferrer">
-        <div class="thumb">
-          <!-- вариант 1: gif превью -->
-          <img src="assets/films_01.gif" alt="FILM 01" loading="lazy" />
-          <!-- вариант 2 (если гифки нет): jpg -->
-          <!-- <img src="assets/films_01.jpg" alt="FILM 01" loading="lazy" /> -->
-        </div>
+      <a class="card horizontal"
+         href="https://www.youtube.com/watch?v=AMpScs_LjzU"
+         target="_blank" rel="noreferrer"
+         aria-label="FILM_01 (YouTube)">
+        <div class="placeholder"></div>
         <div class="side">FILM_01</div>
         <div class="caption">FILM_01</div>
       </a>
 
-      <a class="card horizontal" href="https://www.youtube.com/watch?v=YYYYYYYYYYY" target="_blank" rel="noreferrer">
-        <div class="thumb">
-          <img src="assets/films_02.gif" alt="FILM 02" loading="lazy" />
-        </div>
+      <a class="card horizontal"
+         href="https://www.youtube.com/watch?v=zSz_THqWE0A"
+         target="_blank" rel="noreferrer"
+         aria-label="FILM_02 (YouTube)">
+        <div class="placeholder"></div>
         <div class="side">FILM_02</div>
         <div class="caption">FILM_02</div>
       </a>
 
-      <a class="card horizontal" href="https://www.youtube.com/watch?v=ZZZZZZZZZZZ" target="_blank" rel="noreferrer">
-        <div class="thumb">
-          <img src="assets/films_03.gif" alt="FILM 03" loading="lazy" />
-        </div>
+      <a class="card horizontal"
+         href="https://www.youtube.com/watch?v=gZIBObxKs6A"
+         target="_blank" rel="noreferrer"
+         aria-label="FILM_03 (YouTube)">
+        <div class="placeholder"></div>
         <div class="side">FILM_03</div>
         <div class="caption">FILM_03</div>
       </a>
-
     </section>
 
-    <!-- VERTICAL (9:16) -->
+    <!-- VERTICAL (Instagram Reels) -->
     <section class="grid" id="vertical">
-
-      <a class="card vertical" href="https://www.youtube.com/shorts/AAAAAAAAAAA" target="_blank" rel="noreferrer">
-        <div class="thumb">
-          <img src="assets/vertical_01.gif" alt="VERTICAL 01" loading="lazy" />
-        </div>
+      <a class="card vertical"
+         href="https://www.instagram.com/reel/DQZMQ-lk-uY/"
+         target="_blank" rel="noreferrer"
+         aria-label="VERTICAL_01 (Instagram Reel)">
+        <div class="placeholder"></div>
         <div class="side">VERTICAL_01</div>
         <div class="caption">VERTICAL_01</div>
       </a>
 
-      <a class="card vertical" href="https://www.youtube.com/shorts/BBBBBBBBBBB" target="_blank" rel="noreferrer">
-        <div class="thumb">
-          <img src="assets/vertical_02.gif" alt="VERTICAL 02" loading="lazy" />
-        </div>
+      <a class="card vertical"
+         href="https://www.instagram.com/reel/DLpgPS9MT56/"
+         target="_blank" rel="noreferrer"
+         aria-label="VERTICAL_02 (Instagram Reel)">
+        <div class="placeholder"></div>
         <div class="side">VERTICAL_02</div>
         <div class="caption">VERTICAL_02</div>
       </a>
 
-      <a class="card vertical" href="https://www.youtube.com/shorts/CCCCCCCCCCC" target="_blank" rel="noreferrer">
-        <div class="thumb">
-          <img src="assets/vertical_03.gif" alt="VERTICAL 03" loading="lazy" />
-        </div>
+      <a class="card vertical"
+         href="https://www.instagram.com/reel/DObFhBcDCms/"
+         target="_blank" rel="noreferrer"
+         aria-label="VERTICAL_03 (Instagram Reel)">
+        <div class="placeholder"></div>
         <div class="side">VERTICAL_03</div>
         <div class="caption">VERTICAL_03</div>
       </a>
-
     </section>
 
     <footer class="footer">
       <div class="footer-links">
-        <a href="https://instagram.com/yourhandle" target="_blank" rel="noreferrer">instagram</a>
+        <a class="footer-link" href="https://instagram.com/yourhandle" target="_blank" rel="noreferrer">instagram</a>
       </div>
       <div class="footer-note">Berlin · 2026</div>
     </footer>
@@ -96,17 +94,13 @@
     const films = document.getElementById("films");
     const vertical = document.getElementById("vertical");
 
-    tabs.forEach(btn => {
-      btn.addEventListener("click", () => {
-        tabs.forEach(b => b.classList.remove("is-active"));
-        btn.classList.add("is-active");
+    function show(which) {
+      films.classList.toggle("is-active", which === "films");
+      vertical.classList.toggle("is-active", which === "vertical");
+      tabs.forEach(t => t.classList.toggle("is-active", t.dataset.tab === which));
+    }
 
-        films.classList.remove("is-active");
-        vertical.classList.remove("is-active");
-
-        (btn.dataset.tab === "films" ? films : vertical).classList.add("is-active");
-      });
-    });
+    tabs.forEach(btn => btn.addEventListener("click", () => show(btn.dataset.tab)));
   </script>
 
 </body>
