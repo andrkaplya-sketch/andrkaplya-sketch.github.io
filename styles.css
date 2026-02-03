@@ -86,12 +86,23 @@ body{
 .card.horizontal{ aspect-ratio:16/9; }
 .card.vertical{ aspect-ratio:9/16; }
 
+/* YouTube thumbnail */
+.thumb{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  transform:scale(1.01); /* чтобы не было микро-рамки */
+}
+
+/* placeholder for vertical */
 .ph{
   width:100%;
   height:100%;
   background:radial-gradient(circle at 50% 50%, #140000, #000);
 }
 
+/* vertical side label */
 .side{
   position:absolute;
   top:10px;
@@ -106,36 +117,19 @@ body{
   user-select:none;
 }
 
-.cap{
-  position:absolute;
-  left:0; right:0;
-  bottom:8px;
-  text-align:center;
-  font-size:10px;
-  letter-spacing:1.2px;
-  text-transform:uppercase;
-  color:rgba(224,0,0,.85);
-  text-shadow:0 1px 12px rgba(0,0,0,.9);
-  pointer-events:none;
-}
-
+/* footer only year */
 .footer{
   display:flex;
-  justify-content:space-between;
+  justify-content:center;
   align-items:center;
-  gap:14px;
-  flex-wrap:wrap;
   padding-top:16px;
   margin-top:12px;
 }
-
-.ig{
-  color:var(--red);
-  text-decoration:none;
+.year{
+  opacity:.85;
+  font-size:12px;
+  letter-spacing:.6px;
 }
-.ig:hover{ text-decoration:underline; }
-
-.meta{ opacity:.85; }
 
 @media (max-width:900px){
   .grid{ grid-template-columns:repeat(2, 1fr); }
