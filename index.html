@@ -8,68 +8,104 @@
 </head>
 <body>
 
-  <div class="page">
+  <header class="header">
+    <h1 class="title">ANDRII KAPLIA</h1>
 
-    <header class="top">
-      <div class="brand">ANDRII KAPLIA</div>
-      <a class="toplink" href="mailto:youremail@gmail.com">contact</a>
-    </header>
+    <div class="topbar">
+      <button class="tab is-active" data-tab="films">films</button>
+      <button class="tab" data-tab="vertical">vertical</button>
+      <a class="contact" href="mailto:youremail@gmail.com">contact</a>
+    </div>
+  </header>
 
-    <main class="frame">
-      <!-- WORKS (горизонтальные) -->
-      <section class="grid" aria-label="Works">
+  <main class="wrap">
 
-        <!-- карточка -->
-        <a class="tile" href="#" aria-label="Work 01">
-          <div class="media ratio-16x9">
-            <video src="assets/works_01.mp4" muted loop playsinline preload="metadata"></video>
-          </div>
-          <div class="side">MY_WORK_01</div>
-          <div class="under">MY_WORK_01</div>
-        </a>
+    <!-- FILMS (horizontal) -->
+    <section class="grid is-active" id="films">
 
-        <a class="tile" href="#" aria-label="Work 02">
-          <div class="media ratio-16x9">
-            <video src="assets/works_02.mp4" muted loop playsinline preload="metadata"></video>
-          </div>
-          <div class="side">MY_WORK_02</div>
-          <div class="under">MY_WORK_02</div>
-        </a>
+      <!-- пример: YouTube ссылка + превью -->
+      <a class="card horizontal" href="https://www.youtube.com/watch?v=XXXXXXXXXXX" target="_blank" rel="noreferrer">
+        <div class="thumb">
+          <!-- вариант 1: gif превью -->
+          <img src="assets/films_01.gif" alt="FILM 01" loading="lazy" />
+          <!-- вариант 2 (если гифки нет): jpg -->
+          <!-- <img src="assets/films_01.jpg" alt="FILM 01" loading="lazy" /> -->
+        </div>
+        <div class="side">FILM_01</div>
+        <div class="caption">FILM_01</div>
+      </a>
 
-        <a class="tile" href="#" aria-label="Work 03">
-          <div class="media ratio-16x9">
-            <video src="assets/works_03.mp4" muted loop playsinline preload="metadata"></video>
-          </div>
-          <div class="side">MY_WORK_03</div>
-          <div class="under">MY_WORK_03</div>
-        </a>
+      <a class="card horizontal" href="https://www.youtube.com/watch?v=YYYYYYYYYYY" target="_blank" rel="noreferrer">
+        <div class="thumb">
+          <img src="assets/films_02.gif" alt="FILM 02" loading="lazy" />
+        </div>
+        <div class="side">FILM_02</div>
+        <div class="caption">FILM_02</div>
+      </a>
 
-        <!-- добавляй дальше по этому же шаблону -->
+      <a class="card horizontal" href="https://www.youtube.com/watch?v=ZZZZZZZZZZZ" target="_blank" rel="noreferrer">
+        <div class="thumb">
+          <img src="assets/films_03.gif" alt="FILM 03" loading="lazy" />
+        </div>
+        <div class="side">FILM_03</div>
+        <div class="caption">FILM_03</div>
+      </a>
 
-      </section>
+    </section>
 
-      <!-- Стрелка справа (как на рефе) -->
-      <button class="arrow" type="button" aria-label="Next">
-        <span>›</span>
-      </button>
-    </main>
+    <!-- VERTICAL (9:16) -->
+    <section class="grid" id="vertical">
 
-    <footer class="bottom">
-      <div class="contacts">
-        <div>Email: youremail@gmail.com</div>
-        <div>Instagram: @yourhandle</div>
-        <div>Berlin</div>
+      <a class="card vertical" href="https://www.youtube.com/shorts/AAAAAAAAAAA" target="_blank" rel="noreferrer">
+        <div class="thumb">
+          <img src="assets/vertical_01.gif" alt="VERTICAL 01" loading="lazy" />
+        </div>
+        <div class="side">VERTICAL_01</div>
+        <div class="caption">VERTICAL_01</div>
+      </a>
+
+      <a class="card vertical" href="https://www.youtube.com/shorts/BBBBBBBBBBB" target="_blank" rel="noreferrer">
+        <div class="thumb">
+          <img src="assets/vertical_02.gif" alt="VERTICAL 02" loading="lazy" />
+        </div>
+        <div class="side">VERTICAL_02</div>
+        <div class="caption">VERTICAL_02</div>
+      </a>
+
+      <a class="card vertical" href="https://www.youtube.com/shorts/CCCCCCCCCCC" target="_blank" rel="noreferrer">
+        <div class="thumb">
+          <img src="assets/vertical_03.gif" alt="VERTICAL 03" loading="lazy" />
+        </div>
+        <div class="side">VERTICAL_03</div>
+        <div class="caption">VERTICAL_03</div>
+      </a>
+
+    </section>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="https://instagram.com/yourhandle" target="_blank" rel="noreferrer">instagram</a>
       </div>
+      <div class="footer-note">Berlin · 2026</div>
     </footer>
 
-  </div>
+  </main>
 
   <script>
-    // autoplay try + play on hover (чтобы выглядело как гифки)
-    document.querySelectorAll("video").forEach(v => {
-      v.play().catch(()=>{});
-      v.addEventListener("mouseenter", () => v.play().catch(()=>{}));
-      v.addEventListener("mouseleave", () => { v.pause(); v.currentTime = 0; });
+    const tabs = document.querySelectorAll(".tab");
+    const films = document.getElementById("films");
+    const vertical = document.getElementById("vertical");
+
+    tabs.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabs.forEach(b => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+
+        films.classList.remove("is-active");
+        vertical.classList.remove("is-active");
+
+        (btn.dataset.tab === "films" ? films : vertical).classList.add("is-active");
+      });
     });
   </script>
 
