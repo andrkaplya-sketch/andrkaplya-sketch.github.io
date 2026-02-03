@@ -1,13 +1,13 @@
 :root{
   --bg:#000;
   --red:#e00000;
-  --red2:rgba(224,0,0,.55);
+  --red-soft:rgba(224,0,0,.55);
   --line:rgba(255,255,255,.12);
-  --max:980px;
+  --max:1000px;
 }
 
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
+*{box-sizing:border-box}
+html,body{height:100%}
 
 body{
   margin:0;
@@ -16,93 +16,113 @@ body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
+/* ===== HEADER ===== */
+
 .header{
   max-width:var(--max);
   margin:28px auto 0;
-  padding:0 18px;
+  padding:0 20px;
   text-align:center;
 }
 
 .title{
-  font-size:28px;
+  font-size:30px;
   font-weight:700;
-  letter-spacing:2px;
-  margin:0 0 8px;
+  letter-spacing:3px;
+  margin-bottom:10px;
 }
 
 .nav{
   display:flex;
   justify-content:center;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:18px;
+  gap:12px;
+  margin-bottom:24px;
 }
 
 .tab{
   background:transparent;
   border:1px solid rgba(224,0,0,.25);
   color:var(--red);
-  padding:8px 12px;
+  padding:8px 14px;
   font-size:14px;
   cursor:pointer;
   text-transform:lowercase;
 }
-.tab.is-active{ border-color:var(--red); }
+
+.tab.is-active{
+  border-color:var(--red);
+}
 
 .contact{
   color:var(--red);
   text-decoration:none;
-  border-bottom:1px solid transparent;
-  padding:6px 8px;
+  padding:8px 10px;
 }
-.contact:hover{ border-bottom-color:var(--red); }
+
+/* ===== MAIN FRAME (боковые линии как в рефе) ===== */
 
 .frame{
-  width:min(var(--max), calc(100% - 36px));
+  width:min(var(--max), calc(100% - 40px));
   margin:0 auto;
   border-left:1px solid var(--line);
   border-right:1px solid var(--line);
-  padding:18px 18px 26px;
+  padding:10px 20px 40px;
 }
+
+/* ===== GRID ===== */
 
 .grid{
   display:none;
   grid-template-columns:repeat(3, 1fr);
-  gap:18px;
+  gap:22px;
+  margin-top:10px;
 }
-.grid.is-active{ display:grid; }
+
+.grid.is-active{
+  display:grid;
+}
+
+/* ===== CARD ===== */
 
 .card{
   position:relative;
   display:block;
   border:1px solid rgba(224,0,0,.18);
-  background:#050000;
-  text-decoration:none;
   overflow:hidden;
+  text-decoration:none;
+  background:#050000;
+  transition:border .2s ease;
 }
-.card:hover{ border-color:rgba(224,0,0,.55); }
 
+.card:hover{
+  border-color:rgba(224,0,0,.55);
+}
+
+/* форматы */
 .card.horizontal{ aspect-ratio:16/9; }
 .card.vertical{ aspect-ratio:9/16; }
 
-/* YouTube thumbnail */
+/* ===== YouTube PREVIEW ===== */
+
 .thumb{
+  position:absolute;
+  inset:0;
   width:100%;
   height:100%;
-  display:block;
   object-fit:cover;
-  transform:scale(1.01); /* чтобы не было микро-рамки */
+  transform:scale(1.02);
 }
 
-/* placeholder for vertical */
+/* ===== Placeholder (для tiktok) ===== */
+
 .ph{
-  width:100%;
-  height:100%;
+  position:absolute;
+  inset:0;
   background:radial-gradient(circle at 50% 50%, #140000, #000);
 }
 
-/* vertical side label */
+/* ===== Vertical side label ===== */
+
 .side{
   position:absolute;
   top:10px;
@@ -110,32 +130,35 @@ body{
   writing-mode:vertical-rl;
   transform:rotate(180deg);
   font-size:10px;
-  letter-spacing:1.6px;
+  letter-spacing:1.8px;
   text-transform:uppercase;
-  color:var(--red2);
+  color:var(--red-soft);
   pointer-events:none;
   user-select:none;
 }
 
-/* footer only year */
+/* ===== FOOTER ===== */
+
 .footer{
   display:flex;
-  justify-content:center;
-  align-items:center;
-  padding-top:16px;
-  margin-top:12px;
-}
-.year{
-  opacity:.85;
-  font-size:12px;
-  letter-spacing:.6px;
+  justify-content:flex-start;
+  margin-top:26px;
 }
 
-@media (max-width:900px){
-  .grid{ grid-template-columns:repeat(2, 1fr); }
+.year{
+  font-size:12px;
+  opacity:.8;
+  letter-spacing:.5px;
 }
-@media (max-width:560px){
-  .grid{ grid-template-columns:1fr; }
-  .title{ font-size:24px; }
-  .frame{ border-left:0; border-right:0; }
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:600px){
+  .grid{grid-template-columns:1fr}
+  .title{font-size:24px}
+  .frame{border-left:0;border-right:0}
 }
