@@ -1,107 +1,134 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ANDRII KAPLIA</title>
-  <link rel="stylesheet" href="./styles.css" />
-</head>
-<body>
+:root{
+  --bg:#000;
+  --red:#e00000;
+  --red2:rgba(224,0,0,.55);
+  --line:rgba(255,255,255,.12);
+  --max:980px;
+}
 
-  <header class="header">
-    <h1 class="title">ANDRII KAPLIA</h1>
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--red);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
 
-    <div class="topbar">
-      <button class="tab is-active" data-tab="films" type="button">films</button>
-      <button class="tab" data-tab="vertical" type="button">vertical</button>
-      <a class="contact" href="mailto:youremail@gmail.com">contact</a>
-    </div>
-  </header>
+.header{
+  max-width:var(--max);
+  margin:28px auto 0;
+  padding:0 18px;
+  text-align:center;
+}
 
-  <main class="wrap">
+.title{
+  margin:0 0 6px;
+  letter-spacing:2px;
+  font-weight:700;
+  font-size:28px;
+}
 
-    <!-- FILMS (YouTube) -->
-    <section class="grid is-active" id="films">
-      <a class="card horizontal"
-         href="https://www.youtube.com/watch?v=AMpScs_LjzU"
-         target="_blank" rel="noreferrer"
-         aria-label="FILM_01 (YouTube)">
-        <div class="placeholder"></div>
-        <div class="side">FILM_01</div>
-        <div class="caption">FILM_01</div>
-      </a>
+.topbar{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
 
-      <a class="card horizontal"
-         href="https://www.youtube.com/watch?v=zSz_THqWE0A"
-         target="_blank" rel="noreferrer"
-         aria-label="FILM_02 (YouTube)">
-        <div class="placeholder"></div>
-        <div class="side">FILM_02</div>
-        <div class="caption">FILM_02</div>
-      </a>
+.tab{
+  background:transparent;
+  border:1px solid rgba(224,0,0,.25);
+  color:var(--red);
+  padding:8px 12px;
+  text-transform:lowercase;
+  cursor:pointer;
+  font-size:14px;
+}
+.tab.is-active{ border-color:var(--red); }
 
-      <a class="card horizontal"
-         href="https://www.youtube.com/watch?v=gZIBObxKs6A"
-         target="_blank" rel="noreferrer"
-         aria-label="FILM_03 (YouTube)">
-        <div class="placeholder"></div>
-        <div class="side">FILM_03</div>
-        <div class="caption">FILM_03</div>
-      </a>
-    </section>
+.contact{
+  color:var(--red);
+  text-decoration:none;
+  border-bottom:1px solid transparent;
+  padding:6px 8px;
+}
+.contact:hover{border-bottom-color:var(--red)}
 
-    <!-- VERTICAL (Instagram Reels) -->
-    <section class="grid" id="vertical">
-      <a class="card vertical"
-         href="https://www.instagram.com/reel/DQZMQ-lk-uY/"
-         target="_blank" rel="noreferrer"
-         aria-label="VERTICAL_01 (Instagram Reel)">
-        <div class="placeholder"></div>
-        <div class="side">VERTICAL_01</div>
-        <div class="caption">VERTICAL_01</div>
-      </a>
+.wrap{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 18px 40px;
+  border-left:1px solid var(--line);
+  border-right:1px solid var(--line);
+}
 
-      <a class="card vertical"
-         href="https://www.instagram.com/reel/DLpgPS9MT56/"
-         target="_blank" rel="noreferrer"
-         aria-label="VERTICAL_02 (Instagram Reel)">
-        <div class="placeholder"></div>
-        <div class="side">VERTICAL_02</div>
-        <div class="caption">VERTICAL_02</div>
-      </a>
+.grid{
+  display:none;
+  grid-template-columns: repeat(3, 1fr);
+  gap:18px;
+  padding:18px 18px 26px;
+}
+.grid.is-active{display:grid}
 
-      <a class="card vertical"
-         href="https://www.instagram.com/reel/DObFhBcDCms/"
-         target="_blank" rel="noreferrer"
-         aria-label="VERTICAL_03 (Instagram Reel)">
-        <div class="placeholder"></div>
-        <div class="side">VERTICAL_03</div>
-        <div class="caption">VERTICAL_03</div>
-      </a>
-    </section>
+.card{
+  position:relative;
+  display:block;
+  text-decoration:none;
+  border:1px solid rgba(224,0,0,.18);
+  overflow:hidden;
+  background:#050000;
+}
+.card:hover{border-color:rgba(224,0,0,.55)}
 
-    <footer class="footer">
-      <div class="footer-links">
-        <a class="footer-link" href="https://instagram.com/yourhandle" target="_blank" rel="noreferrer">instagram</a>
-      </div>
-      <div class="footer-note">Berlin · 2026</div>
-    </footer>
+.card.horizontal{aspect-ratio:16/9;}
+.card.vertical{aspect-ratio:9/16;}
 
-  </main>
+.placeholder{
+  width:100%;
+  height:100%;
+  background: radial-gradient(circle at 50% 50%, #140000, #000);
+}
 
-  <script>
-    const tabs = document.querySelectorAll(".tab");
-    const films = document.getElementById("films");
-    const vertical = document.getElementById("vertical");
+/* vertical side label */
+.side{
+  position:absolute;
+  top:10px;
+  right:8px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size:10px;
+  letter-spacing:1.6px;
+  text-transform:uppercase;
+  color:var(--red2);
+  pointer-events:none;
+  user-select:none;
+}
 
-    function show(which) {
-      films.classList.toggle("is-active", which === "films");
-      vertical.classList.toggle("is-active", which === "vertical");
-      tabs.forEach(t => t.classList.toggle("is-active", t.dataset.tab === which));
-    }
+.footer{
+  padding:14px 18px 28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
 
-    tabs.forEach(btn => btn.addEventListener("click", () => show(btn.dataset.tab)));
-  </script>
+.footer a{
+  color:var(--red);
+  text-decoration:none;
+  margin-right:14px;
+}
+.footer a:hover{text-decoration:underline}
+.footer-note{opacity:.85}
 
-</body>
-</html>
+@media (max-width: 900px){
+  .grid{grid-template-columns: repeat(2, 1fr);}
+}
+@media (max-width: 560px){
+  .grid{grid-template-columns: 1fr;}
+  .title{font-size:24px}
+  .wrap{border-left:0;border-right:0}
+}
